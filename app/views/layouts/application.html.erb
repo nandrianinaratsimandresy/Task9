@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<div class="header">
+  <%= link_to blogs_path do %> <h1>Facebook</h1>
+  <% end %>
+</div>
+  <body>
+    <div class="signUp">
+    <% if logged_in? %>
+      <%= link_to "Profile", user_path(current_user.id) %>
+      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+    <% else %>
+      <%= link_to "Sign up", new_user_path %>
+      <%= link_to "Login", new_session_path %>
+    <% end %>
+  </div>
+  <% flash.each do |key, value| %>
+   <%= content_tag(:div, value, class: "#{key}") %>
+   <% end %>
+  <%= yield %>
+  </body>
+  </html>

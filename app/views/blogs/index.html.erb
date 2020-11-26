@@ -1,0 +1,23 @@
+<h1>All blogs</h1>
+
+<%= link_to 'New blog', new_blog_path %>
+
+<% @blogs.each do |blog| %>
+<article>
+  <p>
+    <strong><%= blog.user.name %></strong>
+  </p>
+  <hr>
+  <% if blog.image && blog.image.url %>
+  <%= image_tag blog.image.url()%>
+  <% end %>
+
+  <p><%= blog.blog %></p>
+  <br>
+  <br>
+  <span class="button"><%= link_to 'Show', blog %></span>
+  <span class="button"><%= link_to 'Edit', edit_blog_path(blog) %></span>
+  <span class="button"><%= link_to 'Delete', blog, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+  <br><br>
+</article>
+<% end %>
