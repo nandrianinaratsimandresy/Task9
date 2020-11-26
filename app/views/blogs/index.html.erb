@@ -1,6 +1,6 @@
-<h1>All blogs</h1>
+<h1>Timeline</h1>
 
-<%= link_to 'New blog', new_blog_path %>
+<%= link_to 'New post', new_blog_path %>
 
 <% @blogs.each do |blog| %>
 <article>
@@ -9,7 +9,7 @@
   </p>
   <hr>
   <% if blog.image && blog.image.url %>
-  <%= image_tag blog.image.url()%>
+  <%= image_tag(blog.image.url, size: 20*20) %>
   <% end %>
 
   <p><%= blog.blog %></p>

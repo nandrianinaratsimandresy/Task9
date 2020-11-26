@@ -12,7 +12,7 @@
 <% end %>
 
   <div class="field">
-    <%= form.label :blog %>
+    <%= form.label :blog, 'Post' %>
     <%= form.text_field :blog %>
   </div>
 
@@ -24,6 +24,10 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <% if @blog.id.present? %>
+      <%= form.submit "Update post" %>
+    <% else %>
+      <%= form.submit "Create new post" %>
+    <%end%>
   </div>
 <% end %>
