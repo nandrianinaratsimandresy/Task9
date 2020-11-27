@@ -1,23 +1,30 @@
+<div class="container justify-content-center">
+ <div class="col-8">
+
 <h1>Timeline</h1>
+  <div class="row, justify-content-center">
+    <button type="button" class="btn btn-primary"><%= link_to 'New post', new_blog_path %></button>
+    <% @blogs.each do |blog| %>
+    <article>
+      <p>
+        <strong><%= blog.user.name %></strong>
+      </p>
+      <hr>
+      <% if blog.image && blog.image.url %>
+      <%= image_tag(blog.image.url, size: 20*20) %>
+      <% end %>
 
-<%= link_to 'New post', new_blog_path %>
+      <p><%= blog.blog %></p>
+      <br>
+      <br>
 
-<% @blogs.each do |blog| %>
-<article>
-  <p>
-    <strong><%= blog.user.name %></strong>
-  </p>
-  <hr>
-  <% if blog.image && blog.image.url %>
-  <%= image_tag(blog.image.url, size: 20*20) %>
-  <% end %>
+        <button type="button" class="btn btn-primary"><%= link_to 'Show', blog %></button>
+        <button type="button" class="btn btn-primary"><%= link_to 'Edit', edit_blog_path(blog) %></button>
+        <button type="button" class="btn btn-primary"><%= link_to 'Delete', blog, method: :delete, data: { confirm: 'Are you sure?' } %></button>
 
-  <p><%= blog.blog %></p>
-  <br>
-  <br>
-  <span class="button"><%= link_to 'Show', blog %></span>
-  <span class="button"><%= link_to 'Edit', edit_blog_path(blog) %></span>
-  <span class="button"><%= link_to 'Delete', blog, method: :delete, data: { confirm: 'Are you sure?' } %></span>
-  <br><br>
-</article>
-<% end %>
+      <br><br>
+    </article>
+    <% end %>
+  </div>
+</div>
+</div>
